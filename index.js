@@ -85,10 +85,11 @@ app.put('/api/students/:id', async (req, res) => {
 // Eliminar un estudiante
 app.delete('/api/students/:id', async (req, res) => {
     try {
-        const student = await Student.findByIdAndRemove(req.params.id);
+        const student = await Student.findByIdAndDelete(req.params.id);
         if(!student) return res.status(404).send('Estudiante no encontrado');
         res.send({ message: 'Estudiante eliminado'});
     } catch (err) {
+        console.error(err)
         res.status(500).send('Error al eliminar el estudiante');
     }
 });
