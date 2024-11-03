@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); // Importar el paquete cors
 
 // Crear una aplicación express
 const app = express();
@@ -10,6 +11,7 @@ app.listen(port, () => {
 
 // Middleware para permitir el uso de JSON
 app.use(express.json());
+app.use(cors()); // Habilitar CORS para todas las rutas
 
 // Conexión con la base de datos MongoDB
 mongoose.connect('mongodb://localhost:27017/studentDB', {
